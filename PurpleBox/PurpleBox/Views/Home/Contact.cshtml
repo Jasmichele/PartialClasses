@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@{ 
+
+    MovieRentalEntities1 db = new MovieRentalEntities1();
+    var cust = from c in db.Customers
+               select new
+               {
+                   name = c.CustomerName,
+                   num = c.CustomerPhoneNum
+               };
+ 
+
+}
+<table style="border: 2px solid Purple">
+    <tr>
+        <th style="border: 2px solid Purple">Customer</th>
+        <th style="border: 2px solid White">Phone Number</th>
+    </tr>
+    @foreach (var p in cust)
+
+
+    {
+        <tr style="border: 2px solid Purple">
+            <td style="border: 2px solid Purple">@p.name</td>
+            <td style="border: 2px solid White">@p.num</td>
+        </tr>
+
+    }

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PurpleBox.Models.OverDueModel>
+@{
+    ViewBag.Title = "OverDue";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OverDue</h2>
+
+<table style="border: 2px solid Purple">
+    <tr>
+        <th style="border: 2px solid Purple">Movie Name</th>
+        <th style="border: 2px solid White">Due Date</th>
+        <th style="border: 2px solid White">Movie Renter</th>
+    </tr>
+
+    @foreach (var movie in Model)
+    {
+        <tr style="border: 2px solid Purple">
+            <td style="border: 2px solid Purple">@movie.movie.MovieName</td>
+            <td style="border: 2px solid White">@string.Format("{0:M/d/yyyy}", movie.record.DueDate)</td>
+            <td style="border: 2px solid White">@movie.cust.CustomerName</td>
+        </tr>
+
+    }
+</table>
